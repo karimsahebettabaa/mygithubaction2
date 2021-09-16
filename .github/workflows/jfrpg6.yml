@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI to Jfrog Hub2
+name: CI to Jfrog Hub6
 
 # Controls when the workflow will run
 on:
@@ -36,6 +36,8 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          context: .
           push: true
+          file: Dockerfile
           tags: testgithubaction.jfrog.io/artifactory/mylocalrepo-docker:latest
        
