@@ -39,5 +39,5 @@ jobs:
           context: .
           push: true
           file: Dockerfile
-          tags: testgithubaction.jfrog.io/artifactory/mylocalrepo-docker:latest
+          tags: testgithubaction.jfrog.io/artifactory/default-docker-virtual:latest
        
