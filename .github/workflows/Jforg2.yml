@@ -37,4 +37,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: testgithubaction.jfrog.io/imm2:latest
+          tags: testgithubaction.jfrog.io/artifactory/mylocalrepo-docker:latest
+         
