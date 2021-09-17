@@ -1,0 +1,35 @@
+name: CI to Jfrog Hub2
+
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo 
+        uses: actions/checkout@v2
+
+      - name: Login to JFrog
+        uses: docker/login-action@v1
+        with:
+          registry: testgithubaction.jfrog.io
+          username: ${{ secrets.JFROG_USER_WRITER }}
+          password: ${{ secrets.JFROG_PASSWORD_WRITER }}
+          
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          file: Dockerfile
+          context: .
+          tags: |
+            testgithubaction.jfrog.io/artifactory/docker-repo/mylocalrepo-docker:latest
